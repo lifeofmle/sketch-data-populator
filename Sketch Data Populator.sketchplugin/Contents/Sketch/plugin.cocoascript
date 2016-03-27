@@ -775,7 +775,7 @@ function populate(data, selectedLayers, opt) {
 		var placeholders = getPlaceholders(shapeGroupName);
 
 		// Get the first placeholder
-		placeholder = placeholders[0].key;
+		var placeholder = placeholders[0].key;
 
 		//get image url for placeholder from data row
 		var imageUrl = findValueInDataRow(placeholder, dataRow);
