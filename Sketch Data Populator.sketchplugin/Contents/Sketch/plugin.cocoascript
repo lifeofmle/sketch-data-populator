@@ -482,7 +482,7 @@ function populate(data, selectedLayers, opt) {
 				//find icon and image placeholders
 				var colorPlaceholders = Library.findLayersInLayer('{{{*}}}', false, 'MSShapeGroup', selectedLayer, false, false);
 				var iconPlaceholders = Library.findLayersInLayer('{{*}}', false, 'MSShapeGroup', selectedLayer, false, colorPlaceholders);
-				var imagePlaceholders = Library.findLayersInLayer('{*}', false, 'MSShapeGroup', selectedLayer, false, colorPlaceholders.concat(iconPlaceholders));
+				var imagePlaceholders = Library.findLayersInLayer('{*}*', false, 'MSShapeGroup', selectedLayer, false, colorPlaceholders.concat(iconPlaceholders));
 
 				//process all image placeholders
 				imagePlaceholders.forEach(function(shapeGroup) {
@@ -772,8 +772,10 @@ function populate(data, selectedLayers, opt) {
 		//get shape group name
 		var shapeGroupName = [shapeGroup name].toString();
 
-		//get placeholder name
-		var placeholder = shapeGroupName.substring(1, [shapeGroupName length] - 1);
+		var placeholders = getPlaceholders(shapeGroupName);
+
+		// Get the first placeholder
+		placeholder = placeholders[0].key;
 
 		//get image url for placeholder from data row
 		var imageUrl = findValueInDataRow(placeholder, dataRow);
